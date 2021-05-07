@@ -3,10 +3,7 @@ package org.iesfm.company;
 import org.iesfm.company.exceptions.ClientNotFoundException;
 import org.iesfm.company.exceptions.OrderNotFoundException;
 
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Company implements ICompany{
     private String name;
@@ -53,6 +50,18 @@ public class Company implements ICompany{
     @Override
     public int calculateTotalSpend() throws ClientNotFoundException {
         return 0;
+    }
+
+    @Override
+    public Set<String> getClientNoOrderded() {
+
+        Set<String > noOrderCkientsId = new HashSet<>();
+        for (Client client : clients.values()){
+            if (client.getOrderHistory().isEmpty()){
+                noOrderCkientsId.add(client.getId());
+            }
+        }
+        return noOrderCkientsId;
     }
 
     public String getName() {

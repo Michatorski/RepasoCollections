@@ -38,4 +38,6 @@ public interface ICompany {
      * @throws ClientNotFoundException
      */
      int calculateTotalSpend ()throws ClientNotFoundException;
+
+     Set<String> getClientNoOrderded();
 }
